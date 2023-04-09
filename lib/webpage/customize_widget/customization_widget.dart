@@ -1,4 +1,5 @@
 import 'package:dexider/webpage/common_json.dart';
+import 'package:dexider/webpage/customize_widget/view_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomizationWidget extends StatelessWidget {
@@ -30,6 +31,7 @@ class CustomizationWidget extends StatelessWidget {
   ];
 
   final formKey = GlobalKey<FormState>();
+  final ViewModel vm = ViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,6 @@ class CustomizationWidget extends StatelessWidget {
                     Icons.arrow_drop_down,
                     size: 20,
                   ),
-                  onExpansionChanged: (isExpanded) {},
                   title: Text(
                     sections[index],
                     style: Theme.of(context).textTheme.titleSmall!.copyWith(
@@ -67,7 +68,7 @@ class CustomizationWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: widgetList(context, sections[index]),
+                      child: widgetList(context, sections[index], vm),
                     ),
                   ],
                 ),
@@ -120,10 +121,10 @@ class CustomizationWidget extends StatelessWidget {
     );
   }
 
-  Widget widgetList(BuildContext context, String section) {
+  Widget widgetList(BuildContext context, String section, ViewModel vm) {
     switch (section) {
       case 'Navigation':
-        return navBar(context);
+        return navBar(context, vm);
       // case 'Hero':
       //   return heroBanner(context);
       // case 'About':
@@ -139,7 +140,7 @@ class CustomizationWidget extends StatelessWidget {
     }
   }
 
-  Widget navBar(BuildContext context) {
+  Widget navBar(BuildContext context, ViewModel vm) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -151,7 +152,7 @@ class CustomizationWidget extends StatelessWidget {
           height: 18,
         ),
         TextFormField(
-          initialValue: Common.navbarName,
+          controller: vm.navbarTitle,
           cursorColor: Color.fromARGB(255, 119, 100, 242),
           onChanged: (value) {
             Common.setNavbarName(value);
@@ -159,18 +160,6 @@ class CustomizationWidget extends StatelessWidget {
             // Common.pattern['navBar']!['title'] = value;
             // setState();
           },
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color.fromARGB(255, 119, 100, 242)),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Color.fromARGB(255, 119, 100, 242), width: 2),
-              borderRadius: BorderRadius.circular(5),
-            ),
-          ),
         ),
         SizedBox(
           height: 18,
