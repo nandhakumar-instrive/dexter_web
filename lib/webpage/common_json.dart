@@ -18,9 +18,9 @@ class Common {
   // SECTION - Hero Banner
   static get heroBase => sectionBase[1]['value'];
 
-  static get heroTitle => heroBase['name'];
+  static get heroTitle => heroBase['title'];
   static void setHeroTitle(String value) {
-    heroBase['name'] = value;
+    heroBase['title'] = value;
   }
 
   static get heroDesc => heroBase['desc'];

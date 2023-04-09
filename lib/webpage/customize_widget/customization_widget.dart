@@ -128,10 +128,10 @@ class CustomizationWidget extends StatelessWidget {
     switch (section) {
       case 'Navigation':
         return navBar(context, vm);
-      // case 'Hero':
-      //   return heroBanner(context);
-      // case 'About':
-      //   return about(context);
+      case 'Hero':
+        return heroBanner(context, vm);
+      case 'About':
+        return about(context, vm);
       // case 'Services':
       //   return services(context);
       // case 'Testimonials':
@@ -156,10 +156,9 @@ class CustomizationWidget extends StatelessWidget {
         ),
         TextFormField(
           controller: vm.navbarTitle,
-          cursorColor: Color.fromARGB(255, 119, 100, 242),
+          cursorColor: Theme.of(context).primaryColor,
           // onChanged: (value) {
           //   Common.setNavbarName(value);
-
           // },
         ),
         SizedBox(
@@ -172,29 +171,29 @@ class CustomizationWidget extends StatelessWidget {
         SizedBox(
           height: 18,
         ),
-        TextField(
-          cursorColor: Color.fromARGB(255, 119, 100, 242),
+        TextFormField(
+          cursorColor: Theme.of(context).primaryColor,
           controller: vm.navbarTitle1,
         ),
         SizedBox(
           height: 18,
         ),
-        TextField(
-          cursorColor: Color.fromARGB(255, 119, 100, 242),
+        TextFormField(
+          cursorColor: Theme.of(context).primaryColor,
           controller: vm.navbarTitle2,
         ),
         SizedBox(
           height: 18,
         ),
-        TextField(
-          cursorColor: Color.fromARGB(255, 119, 100, 242),
+        TextFormField(
+          cursorColor: Theme.of(context).primaryColor,
           controller: vm.navbarTitle3,
         ),
         SizedBox(
           height: 18,
         ),
-        TextField(
-          cursorColor: Color.fromARGB(255, 119, 100, 242),
+        TextFormField(
+          cursorColor: Theme.of(context).primaryColor,
           controller: vm.navbarTitle4,
         ),
         SizedBox(
@@ -203,4 +202,135 @@ class CustomizationWidget extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget about(BuildContext context, ViewModel vm) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "About Title",
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+      ),
+      SizedBox(
+        height: 18,
+      ),
+      TextFormField(
+        controller: vm.aboutTitle,
+        cursorColor: Theme.of(context).primaryColor,
+      ),
+      SizedBox(
+        height: 18,
+      ),
+      Text(
+        "About Subtitle",
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+      ),
+      SizedBox(
+        height: 18,
+      ),
+      TextFormField(
+        maxLines: 5,
+        controller: vm.aboutDesc,
+        cursorColor: Theme.of(context).primaryColor,
+      ),
+    ],
+  );
+}
+
+Widget heroBanner(BuildContext context, ViewModel vm) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "Header Title",
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+      ),
+      SizedBox(
+        height: 18,
+      ),
+      TextFormField(
+        controller: vm.heroBannerTitle,
+        cursorColor: Theme.of(context).primaryColor,
+      ),
+      SizedBox(
+        height: 18,
+      ),
+      Text(
+        "Header Subtitle",
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+      ),
+      SizedBox(
+        height: 18,
+      ),
+      TextFormField(
+        maxLines: 7,
+        controller: vm.heroBannerSubtitle,
+        cursorColor: Theme.of(context).primaryColor,
+      ),
+      Text(
+        "Max Characters 150",
+        style: TextStyle(
+          fontWeight: FontWeight.normal,
+          fontSize: 12,
+          color: Colors.black45,
+        ),
+      ),
+      // Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //   children: [
+      //     Switch(
+      //       activeTrackColor: Theme.of(context).primaryColor,
+      //       inactiveTrackColor: Theme.of(context).primaryColor,
+      //       activeColor: Colors.white,
+      //       splashRadius: 50.0,
+      //       value: showbutton,
+      //       onChanged: (value) => setState(() => showbutton = value),
+      //     ),
+      //   ],
+      // ),
+      // Text(
+      //   "Button",
+      //   style: TextStyle(
+      //     fontWeight: FontWeight.normal,
+      //     fontSize: 18,
+      //   ),
+      // ),
+      // Padding(
+      //   padding: const EdgeInsets.only(left: 10.0),
+      //   child: Visibility(
+      //     visible: showbutton,
+      //     child: Column(
+      //       crossAxisAlignment: CrossAxisAlignment.start,
+      //       children: [
+      //         Text(
+      //           "Heading",
+      //           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+      //         ),
+      //         SizedBox(
+      //           height: 18,
+      //         ),
+      //         TextField(
+      //           cursorColor: Theme.of(context).primaryColor,
+      //           decoration: InputDecoration(
+      //             contentPadding:
+      //                 EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+      //             enabledBorder: OutlineInputBorder(
+      //               borderSide:
+      //                   BorderSide(color: Theme.of(context).primaryColor),
+      //               borderRadius: BorderRadius.circular(5),
+      //             ),
+      //             focusedBorder: OutlineInputBorder(
+      //               borderSide: BorderSide(
+      //                   color: Theme.of(context).primaryColor, width: 2),
+      //               borderRadius: BorderRadius.circular(5),
+      //             ),
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // )
+    ],
+  );
 }

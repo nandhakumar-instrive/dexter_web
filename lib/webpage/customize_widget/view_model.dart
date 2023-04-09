@@ -8,12 +8,24 @@ class ViewModel {
   final TextEditingController navbarTitle3 = TextEditingController();
   final TextEditingController navbarTitle4 = TextEditingController();
 
+  final TextEditingController heroBannerTitle = TextEditingController();
+  final TextEditingController heroBannerSubtitle = TextEditingController();
+
+  final TextEditingController aboutTitle = TextEditingController();
+  final TextEditingController aboutDesc = TextEditingController();
+
   void inializeValues() {
     navbarTitle.text = Common.navbarName;
     navbarTitle1.text = Common.navButtons[0];
     navbarTitle2.text = Common.navButtons[1];
     navbarTitle3.text = Common.navButtons[2];
     navbarTitle4.text = Common.navButtons[3];
+
+    heroBannerTitle.text = Common.heroTitle;
+    heroBannerSubtitle.text = Common.heroDesc;
+
+    aboutTitle.text = Common.aboutTitle;
+    aboutDesc.text = Common.aboutDesc;
   }
 
   void updateValues() {
@@ -26,5 +38,11 @@ class ViewModel {
         navbarTitle4.text,
       ],
     );
+
+    Common.setHeroTitle(heroBannerTitle.text);
+    Common.setHeroDesc(heroBannerSubtitle.text);
+
+    Common.setAboutTitle(aboutTitle.text);
+    Common.setAboutDesc(aboutDesc.text);
   }
 }
