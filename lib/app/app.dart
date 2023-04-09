@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../resources/theme_manager.dart';
 import 'app_routes.dart';
 
 class App extends StatelessWidget {
@@ -21,9 +20,10 @@ class App extends StatelessWidget {
       title: title,
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.splash,
-      onGenerateRoute: (settings) =>
-          RouteGenerator(settings: settings).getRoute(),
-      theme: getApplicationTheme(),
+      // onGenerateRoute: (settings) =>
+      //     RouteGenerator(settings: settings).getRoute(),
+      // theme: getApplicationTheme(),
+      home: Container(),
     );
   }
 
