@@ -1,6 +1,7 @@
 import 'package:dexider/webpage/common_json.dart';
 import 'package:dexider/webpage/sections/about.dart';
 import 'package:dexider/webpage/sections/export_sections.dart';
+import 'package:dexider/webpage/sections/footer.dart';
 
 class Sections {
   static String navbar(
@@ -30,5 +31,9 @@ class Sections {
     );
 
     // product section
+  }
+
+  static String footer() {
+    return Footer.footer();
   }
 }

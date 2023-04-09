@@ -79,6 +79,7 @@ class _WebpageBuilderState extends State<WebpageBuilder> {
       ),
       Sections.heroBanner(),
       Sections.about(),
+      Sections.footer(),
     ];
   }
 

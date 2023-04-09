@@ -1,4 +1,3 @@
-import 'package:dexider/webpage/common_json.dart';
 import 'package:dexider/webpage/customize_widget/view_model.dart';
 import 'package:flutter/material.dart';
 
@@ -137,7 +136,7 @@ class CustomizationWidget extends StatelessWidget {
       // case 'Testimonials':
       //   return testimonials(context);
       // case 'Footer':
-      //   return footer(context);
+      // // return footer(context);
       default:
         return Container();
     }
