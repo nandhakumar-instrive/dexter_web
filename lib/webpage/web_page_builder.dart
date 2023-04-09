@@ -29,7 +29,7 @@ class _WebpageBuilderState extends State<WebpageBuilder> {
         width: MediaQuery.of(context).size.width,
         child: Row(
           children: [
-            if (isLeftAlign) cutomizerWidget(),
+            // if (isLeftAlign) cutomizerWidget(),
             Expanded(
               flex: 7,
               child: PlatformWebViewWidget(
@@ -44,7 +44,7 @@ class _WebpageBuilderState extends State<WebpageBuilder> {
                 ),
               ).build(context),
             ),
-            if (!isLeftAlign) cutomizerWidget(),
+            cutomizerWidget(),
           ],
         ),
       ),
