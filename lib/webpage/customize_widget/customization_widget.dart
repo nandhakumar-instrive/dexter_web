@@ -29,6 +29,8 @@ class CustomizationWidget extends StatelessWidget {
     'footer'
   ];
 
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,67 +43,79 @@ class CustomizationWidget extends StatelessWidget {
       ),
       height: double.infinity,
       width: double.infinity,
-      child: Column(
-        children: [
-          Expanded(
-            child: ListView.separated(
-              itemBuilder: (itemBuilder, index) => ExpansionTile(
-                trailing: Icon(
-                  Icons.arrow_drop_down,
-                  size: 20,
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.separated(
+                itemBuilder: (itemBuilder, index) => ExpansionTile(
+                  trailing: Icon(
+                    Icons.arrow_drop_down,
+                    size: 20,
+                  ),
+                  onExpansionChanged: (isExpanded) {},
+                  title: Text(
+                    sections[index],
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          letterSpacing: 0.15,
+                        ),
+                  ),
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: widgetList(context, sections[index]),
+                    ),
+                  ],
                 ),
-                onExpansionChanged: (isExpanded) {},
-                title: Text(
-                  sections[index],
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        letterSpacing: 0.15,
-                      ),
+                separatorBuilder: (separatorBuilder, index) => Divider(
+                  color: Colors.grey.shade300,
+                  thickness: 0.62,
                 ),
+                itemCount: sections.length,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 8,
+                vertical: 4,
+              ),
+              child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: widgetList(context, sections[index]),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(double.infinity, 44),
+                      ),
+                      onPressed: () {
+                        formKey.currentState!.save();
+                        setState();
+                      },
+                      child: Text('Apply'),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Expanded(
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        minimumSize: Size(double.infinity, 44),
+                      ),
+                      onPressed: () {
+                        formKey.currentState!.reset();
+                      },
+                      child: Text('Reset'),
+                    ),
                   ),
                 ],
               ),
-              separatorBuilder: (separatorBuilder, index) => Divider(
-                color: Colors.grey.shade300,
-                thickness: 0.62,
-              ),
-              itemCount: sections.length,
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 42),
-                    ),
-                    onPressed: () {
-                      setState();
-                    },
-                    child: Text('Apply'),
-                  ),
-                ),
-                SizedBox(
-                  width: 8,
-                ),
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    child: Text('Reset'),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

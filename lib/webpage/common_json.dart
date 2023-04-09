@@ -1,15 +1,49 @@
 class Common {
-  static get navBase => (pattern['sections'] as List)[0]['value'];
+  static get sectionBase => (pattern['sections'] as List);
+
+  // SECTION - Nav Bar
+  static get navBase => sectionBase[0]['value'];
+
   static get navbarName => navBase['name'];
   static void setNavbarName(String value) {
     navBase['name'] = value;
   }
 
-  // nav bar buttons
   static get navButtons => navBase['actions'];
 
   static void setNavButtons(List<String> value) {
     navBase['actions'] = value;
+  }
+
+  // SECTION - Hero Banner
+  static get heroBase => sectionBase[1]['value'];
+
+  static get heroTitle => heroBase['name'];
+  static void setHeroTitle(String value) {
+    heroBase['name'] = value;
+  }
+
+  static get heroDesc => heroBase['desc'];
+  static void setHeroDesc(String value) {
+    heroBase['desc'] = value;
+  }
+
+  static get heroImage => heroBase['bgImage'];
+  static void setHeroImage(String value) {
+    heroBase['bgImage'] = value;
+  }
+
+  static get heroButtonText => heroBase['btnTxt'];
+  static void setHeroButtonText(String value) {
+    heroBase['btnTxt'] = value;
+  }
+
+  // SECTION - About
+  static get aboutBase => sectionBase[2]['value'];
+
+  static get aboutTitle => aboutBase['name'];
+  static void setAboutTitle(String value) {
+    aboutBase['name'] = value;
   }
 
   static var pattern = {
