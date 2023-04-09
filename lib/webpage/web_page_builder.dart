@@ -1,5 +1,6 @@
 import 'package:dexider/webpage/common_json.dart';
 import 'package:dexider/webpage/customize_widget/customization_widget.dart';
+import 'package:dexider/webpage/customize_widget/view_model.dart';
 import 'package:dexider/webpage/util/html_wrapper.dart';
 import 'package:dexider/webpage/sections/sections_main.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,13 @@ class _WebpageBuilderState extends State<WebpageBuilder> {
   bool isSelected = false;
 
   bool isLeftAlign = false;
+  ViewModel vm = ViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    vm.inializeValues();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +65,7 @@ class _WebpageBuilderState extends State<WebpageBuilder> {
       child: CustomizationWidget(
         changeAlignment(),
         updateState(),
+        vm,
       ),
     );
   }
@@ -69,6 +78,7 @@ class _WebpageBuilderState extends State<WebpageBuilder> {
         isSelected: false,
       ),
       Sections.heroBanner(),
+      Sections.about(),
     ];
   }
 

@@ -41,9 +41,19 @@ class Common {
   // SECTION - About
   static get aboutBase => sectionBase[2]['value'];
 
-  static get aboutTitle => aboutBase['name'];
+  static get aboutTitle => aboutBase['title'];
   static void setAboutTitle(String value) {
-    aboutBase['name'] = value;
+    aboutBase['title'] = value;
+  }
+
+  static get aboutDesc => aboutBase['text'];
+  static void setAboutDesc(String value) {
+    aboutBase['text'] = value;
+  }
+
+  static get aboutImage => aboutBase['image'];
+  static void setAboutImage(String value) {
+    aboutBase['image'] = value;
   }
 
   static var pattern = {

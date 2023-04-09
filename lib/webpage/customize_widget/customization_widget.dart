@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class CustomizationWidget extends StatelessWidget {
   final VoidCallback onClick;
   final Function setState;
+  final ViewModel vm;
 
   CustomizationWidget(
     this.onClick,
-    this.setState, {
+    this.setState,
+    this.vm, {
     super.key,
   });
 
@@ -31,7 +33,6 @@ class CustomizationWidget extends StatelessWidget {
   ];
 
   final formKey = GlobalKey<FormState>();
-  final ViewModel vm = ViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +94,7 @@ class CustomizationWidget extends StatelessWidget {
                       ),
                       onPressed: () {
                         formKey.currentState!.save();
+                        vm.updateValues();
                         setState();
                       },
                       child: Text('Apply'),
@@ -108,6 +110,7 @@ class CustomizationWidget extends StatelessWidget {
                       ),
                       onPressed: () {
                         formKey.currentState!.reset();
+                        vm.inializeValues();
                       },
                       child: Text('Reset'),
                     ),
@@ -154,12 +157,10 @@ class CustomizationWidget extends StatelessWidget {
         TextFormField(
           controller: vm.navbarTitle,
           cursorColor: Color.fromARGB(255, 119, 100, 242),
-          onChanged: (value) {
-            Common.setNavbarName(value);
-            // (Common.pattern['sections'] as List)[0]['value']['name'] = value;
-            // Common.pattern['navBar']!['title'] = value;
-            // setState();
-          },
+          // onChanged: (value) {
+          //   Common.setNavbarName(value);
+
+          // },
         ),
         SizedBox(
           height: 18,
@@ -173,72 +174,28 @@ class CustomizationWidget extends StatelessWidget {
         ),
         TextField(
           cursorColor: Color.fromARGB(255, 119, 100, 242),
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color.fromARGB(255, 119, 100, 242)),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Color.fromARGB(255, 119, 100, 242), width: 2),
-              borderRadius: BorderRadius.circular(5),
-            ),
-          ),
+          controller: vm.navbarTitle1,
         ),
         SizedBox(
           height: 18,
         ),
         TextField(
           cursorColor: Color.fromARGB(255, 119, 100, 242),
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color.fromARGB(255, 119, 100, 242)),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Color.fromARGB(255, 119, 100, 242), width: 2),
-              borderRadius: BorderRadius.circular(5),
-            ),
-          ),
+          controller: vm.navbarTitle2,
         ),
         SizedBox(
           height: 18,
         ),
         TextField(
           cursorColor: Color.fromARGB(255, 119, 100, 242),
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color.fromARGB(255, 119, 100, 242)),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Color.fromARGB(255, 119, 100, 242), width: 2),
-              borderRadius: BorderRadius.circular(5),
-            ),
-          ),
+          controller: vm.navbarTitle3,
         ),
         SizedBox(
           height: 18,
         ),
         TextField(
           cursorColor: Color.fromARGB(255, 119, 100, 242),
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color.fromARGB(255, 119, 100, 242)),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Color.fromARGB(255, 119, 100, 242), width: 2),
-              borderRadius: BorderRadius.circular(5),
-            ),
-          ),
+          controller: vm.navbarTitle4,
         ),
         SizedBox(
           height: 18,
